@@ -1,0 +1,1 @@
+[22-Jun-2011 21:33:41] PHP Fatal error:  Call to undefined function  feedforall_scripts_readfile() in /home/swisher2/public_html/devotedtobeauty.com/test/rss2html.php on line 771
