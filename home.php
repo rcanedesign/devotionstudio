@@ -2,6 +2,11 @@
 <tr><td width="500">
 <br>
 
+
+
+
+
+
 		<!-- Begin MailChimp Signup Form -->
 <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
 <style type="text/css">
