@@ -105,29 +105,23 @@ document.getElementById('contacts-form').submit()
 				<div id="content">
 				
 				Thank you for visiting our wedding page.<br>
-Kelli and Kirsten look forward to working with you!<br><br><br>
+Kirsten and the team of beauty perfectionists look forward to working with you!<br><br><br>
 
 				<h2>Bridal service prices</h2>
 				<table border=0>
 				<tr>
 				<td valign="top" width="250">
-Bride hair day of and trial $175<br>
-Bride hair day of $150<br>
-Bride hair per trial $50<br>
-Bridal party<br>
-Blow dry style $45<br>
-Hair curled and set $55<br>
-Up do $65 and up<br>
+Bride Hair Day of $150<br>
+Bride Hair per Trial $50<br>
+Bridal Party $45-$75<br>
+Flower Girl $30<br>
+
 					<br>
 
 </td><td valign="top" width="250"> 
-Makeup Trial $50<br>
-Bride Makeup Day of Wedding Only $150.00<br>
-Bride Makeup Trial and Day of Wedding $175.00<br>
-Bridesmaids / Mother of Bride or Groom Makeup $55 and up*<br>
-<font size=1>* Depending on if you want false lashes or not.</font><br>
-Lash application $20.00
-<font size=1>(This includes lashes.)</font><br>
+Bride Makeup Day of $150.00<br>
+Bride Makeup per Trial $50.00<br>
+Bridal Party Makeup $65<br>
 <br>
 </td></tr></table>
 					<form id="contacts-form" action="index.php?page=wedding" method="post" onSubmit="return validate()">
