@@ -122,6 +122,7 @@ Flower Girl $30<br>
 Bride Makeup Day of $150.00<br>
 Bride Makeup per Trial $50.00<br>
 Bridal Party Makeup $65<br>
+Flower Girl $30<br>
 <br>
 </td></tr></table>
 					<form id="contacts-form" action="index.php?page=wedding" method="post" onSubmit="return validate()">
