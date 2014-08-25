@@ -42,7 +42,7 @@ Check us out at YELP!<br>
 							<div class="section">
 								<h2>Welcome to Devotion Studio</h2>
 								<p>
-								Devotion Studio is an owner operated, appointment only, salon. Owner, Kirsten, is a Sebastopol raised, determined young woman. Devotion Studio was opened with much thought and determination to make a clean and comfortable environment for our guests. Having my own studio for 3 years I decided to focus solely on weddings and getting rid of a physical location. I now travel to you! I have a few other talented stylists and makeup artists I work with. We do all of our services with our guests happiness as our top priority. No matter what it is you need, you will feel comfortable in knowing that you are in our hands. We specialize in wedding hair and makeup artistry. Beautifying is a gift that we were blessed with. Try us out, you will not be disappointed!
+								Devotion Studio is an owner operated, appointment only, salon. Owner, Kirsten, is a Sebastopol raised, determined young woman. Devotion Studio was opened with much thought and determination to make a clean and comfortable environment for our guests. Having been in a salon, then on to a studio, for 6 years I decided to focus solely on weddings and getting rid of a physical location. I now travel to you! I have a few other talented stylists and makeup artists I work with. We do all of our services with our guests happiness as our top priority. No matter what it is you need, you will feel comfortable in knowing that you are in our hands. We specialize in wedding hair and makeup artistry. Beautifying is a gift that we were blessed with. Try us out, you will not be disappointed!
 </p>
 
 								
