@@ -43,7 +43,6 @@ if($page==""){$page="home";}
 					<div class="row-3">
 						<ul class="site-nav">
 							<li><a <?php if($page!="home"){echo "href='?page=home'";} ?>>Home</a></li>
-							<li><a <?php if($page!="kirsten"){echo "href='?page=kirsten'";} ?>>Kirsten</a></li>
 							<li><a <?php if($page!="wedding"){echo "href='?page=wedding'";} ?>>Weddings</a></li>
 							<li><a <?php if($page!="gallery"){echo "href='?page=gallery'";} ?>>Gallery</a></li>
 							<li><a <?php if($page!="contact"){echo "href='?page=contact'";} ?>>Contact Us</a></li>
