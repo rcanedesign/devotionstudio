@@ -1,5 +1,3 @@
-
-
 <?php
 $directlink = $_GET["contact"];
 
@@ -17,6 +15,82 @@ $captcha = $_POST["captcha"];
 if($captcha=="devoted"){
 
 
+	
+	
+
+// Replace sender@example.com with your "From" address. 
+// This address must be verified with Amazon SES.
+define('SENDER', 'appointmentrequest@devotedtobeauty.com');        
+
+// Replace recipient@example.com with a "To" address. If your account 
+// is still in the sandbox, this address must be verified.
+define('RECIPIENT', 'kirstenss65@gmail.com');  
+                                                      
+// Replace smtp_username with your Amazon SES SMTP user name.
+define('USERNAME','AKIAJQLHLNAJXA4PG47A');  
+
+// Replace smtp_password with your Amazon SES SMTP password.
+define('PASSWORD','AsSxknoZlHNUu7rTUUYtcAcbpEOgw71aj8LS2oID59Ux');  
+
+// If you're using Amazon SES in a region other than US West (Oregon), 
+// replace email-smtp.us-west-2.amazonaws.com with the Amazon SES SMTP  
+// endpoint in the appropriate region.
+define('HOST', 'email-smtp.us-east-1.amazonaws.com');  
+
+ // The port you will connect to on the Amazon SES SMTP endpoint.
+define('PORT', '587');     
+
+// Other message information                                               
+define('SUBJECT','Message from www.DevotedToBeauty.com');
+define('BODY',"A visitor has contacted you from your website!
+ \n\n
+ Name:  $name\n
+ Email:  $email\n
+ Phone:  $phone\n
+ Appointment requested for:  \n
+ \t date: $aptDate \n
+ \t time:  $aptTime\n
+ Service Requested:  $service \n 
+ Refered By: $referedBy \n
+ 
+ \n  \n
+ ");
+
+require_once 'Mail.php';
+
+$headers = array (
+  'From' => SENDER,
+  'To' => RECIPIENT,
+  'Subject' => SUBJECT);
+
+$smtpParams = array (
+  'host' => HOST,
+  'port' => PORT,
+  'auth' => true,
+  'username' => USERNAME,
+  'password' => PASSWORD
+);
+
+ // Create an SMTP client.
+$mail = Mail::factory('smtp', $smtpParams);
+
+// Send the email.
+$result = $mail->send(RECIPIENT, $headers, BODY);
+
+if (PEAR::isError($result)) {
+  echo("Email not sent. " .$result->getMessage() ."\n");
+} else {
+  echo("Email sent!"."\n");
+}	
+	
+	
+	
+	
+	
+	/* 
+	
+	
+	
 if($who=="Kirsten"){
 	$to="kirstenss65@aol.com";
 }else if($who=="Kelli"){
@@ -47,7 +121,7 @@ if($who=="Kirsten"){
    echo("<p>Message delivery failed...</p>");
   }
   
-  
+  */
 }
  ?>
  
@@ -58,11 +132,6 @@ if($who=="Kirsten"){
 function validate(){
 
 
-if(document.getElementById('who').selectedIndex==0){
-	alert("Please select a person to contact");
-	document.getElementById('who').focus();
-	return false;
-}
 
 if(document.getElementById('name').value==""){
 	alert("Please enter your name to submit form.");
@@ -119,24 +188,6 @@ document.getElementById('contacts-form').submit()
 
 					<form id="contacts-form" action="index.php?page=contact" method="post" onSubmit="return validate()">
 						<fieldset>
-							<div class="field">Who would you like to request an appointment with?<br>
-							
-
-							<select name="who" id="who">
-   <option value="">Select One</option>
-<?php						
-//echo $directlink;
-$arr = array("Kirsten");
-foreach ($arr as &$value) {
-	if($directlink==$value){
-		echo "<option value='". $value."' selected>".$value."</option>";
-	}else{
-		echo "<option value='". $value."'>".$value."</option>";
-	}
-}
-?>
-
-</select><br><br></div>
 						  <div class="field"><label>Name:</label><input type="text" name="name" id="name"value=""/></div>
 						  <div class="field"><label>E-mail:</label><input type="text" name="email" id="email" value=""/></div>
 						  <div class="field"><label>Phone:</label><input type="text" name="phone" id="phone" value=""/></div>
