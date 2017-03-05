@@ -10,11 +10,13 @@ $service = $_POST["service"];
 $phone = $_POST["phone"];
 $referedBy = $_POST["referedBy"];
 $captcha = $_POST["captcha"];
+$rigthnow = date("F j, Y, g:i a");
 
 
 if($captcha=="devoted"){
 
 
+	$f = fopen('/tmp/contact.log', 'a');
 	
 	
 
@@ -42,7 +44,9 @@ define('PORT', '587');
 
 // Other message information                                               
 define('SUBJECT','Message from www.DevotedToBeauty.com');
-define('BODY',"A visitor has contacted you from your website!
+define('BODY', "===============  ". $rigthnow  . " ============================== 
+\n
+A visitor has contacted you from your website!
  \n\n
  Name:  $name\n
  Email:  $email\n
@@ -78,52 +82,27 @@ $mail = Mail::factory('smtp', $smtpParams);
 $result = $mail->send(RECIPIENT, $headers, BODY);
 
 if (PEAR::isError($result)) {
-  echo("Email not sent. " .$result->getMessage() ."\n");
+  echo("<br><br> Email not sent. " .$result->getMessage() ."\n");
+  fwrite($f, $result->getMessage());
 } else {
-  echo("Email sent!"."\n");
+  echo(" <br><br> Thank you for contacting us. 
+  <br><br> We will reach out to you soon!  
+  <br><br> Also feel free to call, Mon - Fri (9am - 5pm PST)
+  <br> Devotion Studio : (707) 292-2745 <br><br>");
+  fwrite($f, BODY);
 }	
 	
+fclose($f);	
+}else{	
 	
 	
-	
-	
-	/* 
-	
-	
-	
-if($who=="Kirsten"){
-	$to="kirstenss65@aol.com";
-}else if($who=="Kelli"){
-	$to = "kirstenss65@aol.com";
-}else{
- $to = "agthurber@gmail.com";
-}
- $subject = "Message from www.DevotedToBeauty.com";
- $body = "A visitor has contacted you from your website!
- \n\n
- Name:  $name\n
- Email:  $email\n
- Phone:  $phone\n
- Appointment requested for:  \n
- \t date: $aptDate \n
- \t time:  $aptTime\n
- Service Requested:  $service \n 
- Refered By: $referedBy \n
- 
- \n  \n
- ";
- 
 
- 
- if (mail($to, $subject, $body, null, '-fAppointmentRequest@devotedtobeauty.com')) {
-   echo("<p><br><br><b>Message successfully sent!</b></p>");
-  } else {
-   echo("<p>Message delivery failed...</p>");
-  }
-  
-  */
-}
- ?>
+?>
+
+
+
+
+
  
  
 <!-- content -->
@@ -206,3 +185,8 @@ document.getElementById('contacts-form').submit()
 						</fieldset>
 					 </form>
 				</div>
+<?php
+
+
+}
+ ?>
