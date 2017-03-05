@@ -1,5 +1,3 @@
-
-
 <?php
 $directlink = $_GET["contact"];
 
@@ -12,17 +10,41 @@ $phone = $_POST["phone"];
 $message = $_POST["message"];
 $referedBy = $_POST["referedBy"];
 $captcha = $_POST["captcha"];
-
+$rigthnow = date("F j, Y, g:i a");
 
 if($captcha=="devoted"){
 
 
-	$to="kirstenss65@aol.com";
+	$f = fopen('/tmp/wedding_contact.log', 'a');
+	
 
-# $to = "agthurber@gmail.com";
+// Replace sender@example.com with your "From" address. 
+// This address must be verified with Amazon SES.
+define('SENDER', 'appointmentrequest@devotedtobeauty.com');        
 
- $subject = "Wedding request from www.DevotedToBeauty.com";
- $body = "A visitor has contacted you from your website!
+// Replace recipient@example.com with a "To" address. If your account 
+// is still in the sandbox, this address must be verified.
+define('RECIPIENT', 'kirstenss65@gmail.com');  
+                                                      
+// Replace smtp_username with your Amazon SES SMTP user name.
+define('USERNAME','AKIAJQLHLNAJXA4PG47A');  
+
+// Replace smtp_password with your Amazon SES SMTP password.
+define('PASSWORD','AsSxknoZlHNUu7rTUUYtcAcbpEOgw71aj8LS2oID59Ux');  
+
+// If you're using Amazon SES in a region other than US West (Oregon), 
+// replace email-smtp.us-west-2.amazonaws.com with the Amazon SES SMTP  
+// endpoint in the appropriate region.
+define('HOST', 'email-smtp.us-east-1.amazonaws.com');  
+
+ // The port you will connect to on the Amazon SES SMTP endpoint.
+define('PORT', '587');     
+
+// Other message information                                               
+define('SUBJECT','Wedding request from www.DevotedToBeauty.com');
+define('BODY', "===============  ". $rigthnow  . " ============================== 
+\n
+A visitor has contacted you from your website!
  \n\n
  Name:  $name\n
  Email:  $email\n
@@ -30,25 +52,47 @@ if($captcha=="devoted"){
  Wedding request for:  \n
  \t date: $weddingDate \n
  \t location:  $location\n
- Message:  $message \n 
+ Service Requested:  $message \n 
  Refered By: $referedBy \n
  
  \n  \n
- ";
- 
+ ");
 
- 
- if (mail($to, $subject, $body, null, '-fAppointmentRequest@devotedtobeauty.com')) {
-   echo("<p><br><br><b>Message successfully sent!</b></p>");
-  } else {
-   echo("<p>Message delivery failed...</p>");
-  }
-  
-  
-}
- ?>
- 
- 
+require_once 'Mail.php';
+
+$headers = array (
+  'From' => SENDER,
+  'To' => RECIPIENT,
+  'Subject' => SUBJECT);
+
+$smtpParams = array (
+  'host' => HOST,
+  'port' => PORT,
+  'auth' => true,
+  'username' => USERNAME,
+  'password' => PASSWORD
+);
+
+ // Create an SMTP client.
+$mail = Mail::factory('smtp', $smtpParams);
+
+// Send the email.
+$result = $mail->send(RECIPIENT, $headers, BODY);
+
+if (PEAR::isError($result)) {
+  echo("<br><br> Email not sent. " .$result->getMessage() ."\n");
+  fwrite($f, '<<your string>>');
+} else {
+  echo(" <br><br> Thank you for contacting us. 
+  <br><br> We will reach out to you soon!  
+  <br><br> Also feel free to call, Mon - Fri (9am - 5pm PST)
+  <br> Devotion Studio : (707) 292-2745 <br><br>");
+  fwrite($f, BODY);
+}	
+	
+fclose($f);	
+}else{
+?>
 <!-- content -->
 <script>
 
@@ -146,3 +190,12 @@ Flower Girl $30<br>
 						</fieldset>
 					 </form>
 				</div>
+
+
+<?php
+
+}
+ ?>
+ 
+ 
+
